@@ -5,13 +5,24 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
         this.style.color = "grey";
         var buttonInnerHtml = this.innerHTML;
         makeSound(buttonInnerHtml);
+        buttonAnimation(buttonInnerHtml);
     });
 }
        document.addEventListener("keypress",function(event){
 
            makeSound(event.key);
+           buttonAnimation(event.key);
        })
 
+    function buttonAnimation(currentKey) {
+      var selectedButton=  document.querySelector('.'+currentKey);
+      selectedButton.classList.add("pressed");
+     setTimeout(function () {
+         selectedButton.classList.remove("pressed");
+        },100);
+    }
+         
+    
     function makeSound (key){
     switch (key) {
         case "w":
